@@ -61,6 +61,11 @@ app.post("/verify-otp", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("SID:", process.env.TWILIO_ACCOUNT_SID);
+  console.log("TOKEN:", process.env.TWILIO_AUTH_TOKEN ? "FOUND" : "MISSING");
+  console.log("VERIFY:", process.env.TWILIO_VERIFY_SERVICE_SID);
+  console.log(`Server running on port ${PORT}`);
 });
