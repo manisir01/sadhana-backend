@@ -16,6 +16,7 @@ const client = twilio(
 app.post("/send-otp", async (req, res) => {
   try {
     const { phone } = req.body;
+    console.log("PHONE:", phone);
 
     const verification =
       await client.verify.v2
@@ -30,6 +31,7 @@ app.post("/send-otp", async (req, res) => {
       status: verification.status,
     });
   } catch (error) {
+    console.log("SEND OTP ERROR:", error);
     res.status(500).json({
       success: false,
       error: error.message,
