@@ -63,6 +63,10 @@ app.post("/verify-otp", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+app.get("/", (req, res) => {
+  res.send("Sadhana OTP Server Running");
+});
+
 app.listen(PORT, () => {
   console.log("SID:", process.env.TWILIO_ACCOUNT_SID);
   console.log("TOKEN:", process.env.TWILIO_AUTH_TOKEN ? "FOUND" : "MISSING");
